@@ -4,6 +4,9 @@
 #include "GameFramework/Character.h"
 #include "AuraCharacterBase.generated.h"
 
+class USpringArmComponent;
+class UCameraComponent;
+
 UCLASS(Abstract)
 class AURA_API AAuraCharacterBase : public ACharacter
 {
@@ -14,9 +17,18 @@ public:
 
 protected:
 	virtual void BeginPlay() override;
-	
 private:
-	UPROPERTY(EditAnywhere, Category = "Weapon")
+	
 	TObjectPtr<USkeletalMeshComponent> Weapon;
 
+	UPROPERTY(EditAnywhere, Category = "Camera")
+	TObjectPtr<UCameraComponent> FollowCamera;
+
+	UPROPERTY(EditAnywhere, Category = "Camera")
+	TObjectPtr<USpringArmComponent> CameraBoom;
+
+
+public: // Helper Functions
+	FORCEINLINE UCameraComponent* GetFollowCamera() const { return FollowCamera;}
+	FORCEINLINE USpringArmComponent* GetCameraBoom() const { return CameraBoom;}
 };
