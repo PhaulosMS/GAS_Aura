@@ -5,5 +5,5 @@
 
 AAuraPlayerState::AAuraPlayerState()
 {
-	NetUpdateFrequency = 100;
+	NetUpdateFrequency = 100.0f;
 }
