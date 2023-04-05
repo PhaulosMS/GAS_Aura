@@ -6,6 +6,7 @@
 #include "GameFramework/PlayerController.h"
 #include "AuraPlayerController.generated.h"
 
+class IEnemyInterface;
 class UInputMappingContext;
 class UInputAction;
 struct FInputActionValue;
@@ -25,10 +26,15 @@ public:
 
 
 protected:
+
+	// Virtual Overridden Functions 
 	virtual void BeginPlay() override;
 	virtual void SetupInputComponent() override;
+	virtual void PlayerTick(float DeltaTime) override;
 
 private:
+
+	// Mapping Input and Context
 	UPROPERTY(EditAnywhere, Category = "Input")
 	TObjectPtr<UInputMappingContext> AuraContext;
 
@@ -36,6 +42,11 @@ private:
 	TObjectPtr<UInputAction> MoveAction;
 
 	void Move(const struct FInputActionValue& InputActionValue);
+
+	// Highlighting Enemies
+	IEnemyInterface* ThisActor;
+	IEnemyInterface* LastActor;
+	void  CursorTrace();
 
 	
 	
