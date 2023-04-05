@@ -20,6 +20,8 @@ public:
 
 	AAuraEnemy();
 
+	virtual void BeginPlay() override;
+
 	virtual void HighlightActor() override;
 	virtual void UnhighlightActor() override;
 	
