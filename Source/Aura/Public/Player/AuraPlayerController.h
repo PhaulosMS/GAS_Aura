@@ -44,8 +44,8 @@ private:
 	void Move(const struct FInputActionValue& InputActionValue);
 
 	// Highlighting Enemies
-	IEnemyInterface* ThisActor;
-	IEnemyInterface* LastActor;
+	TObjectPtr<IEnemyInterface> ThisActor;
+	TObjectPtr<IEnemyInterface> LastActor;
 	void  CursorTrace();
 
 	
